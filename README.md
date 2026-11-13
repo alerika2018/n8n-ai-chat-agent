@@ -59,6 +59,8 @@ The application uses n8n to manage the conversation and connect the different co
 - Stores synthetic siding-related information in Supabase.
 - Uses vector-based retrieval to find relevant information.
 - Allows the AI Agent to use retrieved content when answering customer questions.
+[Click here to see n8n workflow used to vectorize data un Supabase](./VectorDataWorkflorn8n.png)
+[Click here to see n8n json workflow used to vectorize data un Supabase](./VectorizeData.json)
 
 ### Security and Response Restrictions
 - Implements jailbreak detection through Guardrails.
