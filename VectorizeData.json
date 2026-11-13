@@ -1,0 +1,663 @@
+{
+  "name": "VectorizeData",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -512,
+        496
+      ],
+      "id": "0c495e3e-14b7-43c8-8e54-52326d20e7ba",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "tableName": {
+          "__rl": true,
+          "value": "knowledgebase",
+          "mode": "list",
+          "cachedResultName": "knowledgebase"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.4,
+      "position": [
+        160,
+        496
+      ],
+      "id": "ca6dd1f0-54bc-4237-8d59-373e0f9a502e",
+      "name": "Supabase Vector Store",
+      "credentials": {
+        "supabaseApi": {
+          "id": "8CqDLRTkbTziqLyc",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "nomic-embed-text:latest"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [
+        176,
+        736
+      ],
+      "id": "f70509a9-0e90-4830-bcd3-546423451514",
+      "name": "Embeddings Ollama",
+      "credentials": {
+        "ollamaApi": {
+          "id": "cqzmg1Hv7mQ4HdUM",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.content }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "category",
+                "value": "={{ $json.category }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        304,
+        736
+      ],
+      "id": "5df54830-bcf6-40be-9ce4-157942f16e82",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM",
+          "mode": "list",
+          "cachedResultName": "Siding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Services",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -288,
+        16
+      ],
+      "id": "98b48a56-6d47-4c83-b56f-269aa0fb8cb2",
+      "name": "Services",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9PG6ykEGM4J1ewzQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM",
+          "mode": "list",
+          "cachedResultName": "Siding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1339824280,
+          "mode": "list",
+          "cachedResultName": "Materials",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit#gid=1339824280"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -288,
+        208
+      ],
+      "id": "eaa020f2-3813-443c-9c1d-b12c32a1cf63",
+      "name": "Materials",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9PG6ykEGM4J1ewzQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM",
+          "mode": "list",
+          "cachedResultName": "Siding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1614403059,
+          "mode": "list",
+          "cachedResultName": "Timelines",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit#gid=1614403059"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -288,
+        400
+      ],
+      "id": "b39ce30e-53e5-4bab-bec9-264a3c4bc60f",
+      "name": "Timelines",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9PG6ykEGM4J1ewzQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1ddb172-f7ab-4d8b-9179-8e9e05faf6eb",
+              "name": "content",
+              "value": "=Service id: {{ $json.service_id }}\nSegment: {{ $json.segment }}\nService name: {{ $json.service_name }}\nDescription: {{ $json.plain_language_description }}\nCommon customer need: {{ $json.common_customer_need }}\nconversation guidance: {{ $json.conversation_guidance }}\nPublic Reference url: {{ $json.public_reference_url }}\n",
+              "type": "string"
+            },
+            {
+              "id": "f5240700-2f60-461e-bf47-ffb0e5f9f8b3",
+              "name": "category",
+              "value": "Services",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -64,
+        16
+      ],
+      "id": "1eb08634-4141-4531-9959-a3abf0c4ac0b",
+      "name": "Transform Services"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1ddb172-f7ab-4d8b-9179-8e9e05faf6eb",
+              "name": "content",
+              "value": "=Material Id:{{ $json.material_id }}\nMaterial:{{ $json.material_family }}\nUse examples:{{ $json.example_profiles_or_styles }}\nCustomer priorities:{{ $json.customer_priorities }}\nPrice range:{{ $json.synthetic_price_range }}\n\n",
+              "type": "string"
+            },
+            {
+              "id": "f5240700-2f60-461e-bf47-ffb0e5f9f8b3",
+              "name": "category",
+              "value": "Materials",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -64,
+        208
+      ],
+      "id": "fdcf3e97-bda8-4d4b-bf2f-3f3dbab0f378",
+      "name": "Transform Materials"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1ddb172-f7ab-4d8b-9179-8e9e05faf6eb",
+              "name": "content",
+              "value": "=Timeline id:{{ $json.timeline_id }}\nScenario:{{ $json.scenario }}\nDuration:{{ $json.illustrative_on_site_duration }}\nTime to start:{{ $json.illustrative_time_to_start }}\n\n\n",
+              "type": "string"
+            },
+            {
+              "id": "f5240700-2f60-461e-bf47-ffb0e5f9f8b3",
+              "name": "category",
+              "value": "Timelines",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -64,
+        400
+      ],
+      "id": "48502cfb-057a-4f38-b581-92d1d31eb994",
+      "name": "Transform Timelines"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM",
+          "mode": "list",
+          "cachedResultName": "Siding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1700577457,
+          "mode": "list",
+          "cachedResultName": "Estimate_Examples",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit#gid=1700577457"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -288,
+        592
+      ],
+      "id": "9de09359-e7c4-4c42-b7ee-675408bbb642",
+      "name": "Estimates",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9PG6ykEGM4J1ewzQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1ddb172-f7ab-4d8b-9179-8e9e05faf6eb",
+              "name": "content",
+              "value": "=Estimate id:{{ $json.estimate_id }}\nContact:{{ $json.fictional_contact }}\nArea name:{{ $json.fictional_area_name }}\nProperty type:{{ $json.property_type }}\nProject type:{{ $json.project_type }}\nMaterial:{{ $json.material }}\nApprox wall area:{{ $json.approx_wall_area }}\nArea unit:{{ $json.area_unit }}\nStoreys:{{ $json.storeys }}\nAccess complexity:{{ $json.access_complexity }}\nComplexity factor:{{ $json.demo_complexity_factor }}\nPrice range:{{ $json.synthetic_price_range }}\nSite: duration:{{ $json.synthetic_site_duration }}\n\n\n\n",
+              "type": "string"
+            },
+            {
+              "id": "f5240700-2f60-461e-bf47-ffb0e5f9f8b3",
+              "name": "category",
+              "value": "EstimatesExamples",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -64,
+        592
+      ],
+      "id": "6a117a6e-6ca2-428c-8188-a27ff56fc4d2",
+      "name": "Transform Estimates"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM",
+          "mode": "list",
+          "cachedResultName": "Siding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 836632062,
+          "mode": "list",
+          "cachedResultName": "FAQ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit#gid=836632062"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -288,
+        784
+      ],
+      "id": "32e37746-984e-4551-ad01-3604973dbddb",
+      "name": "FAQ",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9PG6ykEGM4J1ewzQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1ddb172-f7ab-4d8b-9179-8e9e05faf6eb",
+              "name": "content",
+              "value": "=Faq id:{{ $json.faq_id }}\nTopic:{{ $json.topic }}\nCustomer question:{{ $json.customer_question }}\nPossible answer:{{ $json.demo_answer }}\nRelated categories:{{ $json.related_sheets }}\n\n\n",
+              "type": "string"
+            },
+            {
+              "id": "f5240700-2f60-461e-bf47-ffb0e5f9f8b3",
+              "name": "category",
+              "value": "FAQ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -64,
+        784
+      ],
+      "id": "f0f352df-3569-48c0-adcf-1c1292951498",
+      "name": "Transform FAQ"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM",
+          "mode": "list",
+          "cachedResultName": "Siding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1328221946,
+          "mode": "list",
+          "cachedResultName": "Project_Process",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1J_F79shcjW527vVPyCTdCwgUle9rNoRXA2vlk6233YM/edit#gid=1328221946"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -288,
+        976
+      ],
+      "id": "dee653e5-99b1-47b3-8c44-327d289485ec",
+      "name": "ProjectProcess",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9PG6ykEGM4J1ewzQ",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f1ddb172-f7ab-4d8b-9179-8e9e05faf6eb",
+              "name": "content",
+              "value": "=\nProcess id:{{ $json.process_id }}\nStage:{{ $json.stage }}\nExplanation:{{ $json.plain_language_explanation }}\nInformation needed:{{ $json.information_needed }}\n\n",
+              "type": "string"
+            },
+            {
+              "id": "f5240700-2f60-461e-bf47-ffb0e5f9f8b3",
+              "name": "category",
+              "value": "ProjectProcess",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        -64,
+        976
+      ],
+      "id": "cbb7a4d6-81ef-4583-9c0d-88159e096483",
+      "name": "Transform Project Process"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Services",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Materials",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Timelines",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Estimates",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "FAQ",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ProjectProcess",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Ollama": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Services": {
+      "main": [
+        [
+          {
+            "node": "Transform Services",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Materials": {
+      "main": [
+        [
+          {
+            "node": "Transform Materials",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Timelines": {
+      "main": [
+        [
+          {
+            "node": "Transform Timelines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Services": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Materials": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Timelines": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estimates": {
+      "main": [
+        [
+          {
+            "node": "Transform Estimates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ": {
+      "main": [
+        [
+          {
+            "node": "Transform FAQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Estimates": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform FAQ": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ProjectProcess": {
+      "main": [
+        [
+          {
+            "node": "Transform Project Process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform Project Process": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "f7fa6dae-c86b-48dc-a2cd-ac5f1b7fe9e9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e00f0d8f2145046d6ba0dace31caf653ec378be19d23351d16cfbc14917de77b"
+  },
+  "nodeGroups": [],
+  "id": "PPj7nWjfMPnfNGii",
+  "tags": []
+}
