@@ -7,7 +7,7 @@ This project demonstrates how workflow automation, large language models (LLMs) 
 
 > **Project status:** Prototype  
 > **Data:** Synthetic demonstration data  
-> **Purpose:** Independent portfolio project. Not an official Ideal Siding application.
+> **Purpose:** Independent portfolio project. 
 
 ## Project Overview
 
@@ -25,7 +25,7 @@ The assistant retrieves relevant information from a Supabase knowledge base and 
 
 ## Architecture
 
-The application uses n8n to orchestrate the conversation and connect the different components.
+The application uses n8n to manage the conversation and connect the different components.
 
 **Main workflow:**
 
@@ -82,26 +82,6 @@ The prototype is designed to handle questions such as:
 - What factors affect siding installation costs?
 - What should I consider before replacing my siding?
 - What maintenance does siding require?
-
-## Repository Structure
-
-```text
-ideal-siding-ai-agent/
-│
-├── README.md
-├── workflows/
-│   └── siding-customer-support.json
-├── knowledge-base/
-│   └── sample-siding-data.xlsx
-├── screenshots/
-│   ├── workflow-overview.png
-│   ├── supabase-knowledge-base.png
-│   └── chat-demo.png
-└── docs/
-    └── architecture.md
-```
-
-*The structure above is the suggested organization for this repository. Adjust the filenames to match the files you actually include.*
 
 ## Getting Started
 
